@@ -124,3 +124,73 @@ export class AppComponent  {
 - [Template Syntax](https://angular.io/guide/template-syntax)
 - [Structural Directives](https://angular.io/guide/structural-directives)
 - [Built-in directives](https://angular.io/guide/template-syntax#directives)
+
+
+## #4 - Multiple Components
+
+
+### `src/app/app.component.ts`
+```
+...
+
+@Component({
+  ...
+  template: `
+    ...
+    <hero-detail [hero]="selectedHero"></hero-detail>
+  `,
+  ...
+})
+export class AppComponent  {
+  ...
+}
+```
+
+### `src/app/hero-detail.component.ts`
+
+```
+// Amend the @angular/core import statement to include the 'Input' symbol
+import { Component, Input } from '@angular/core';
+
+import { Hero } from './hero';
+
+@Component({
+  selector: 'hero-detail',
+  template: `
+    <div *ngIf="hero">
+      ...
+        <input [(ngModel)]="hero.name" placeholder="name"/>
+      ...
+    </div>
+  `
+})
+export class HeroDetailComponent {
+
+  @Input() hero: Hero;
+
+}
+```
+
+### `src/app/app.module.ts`
+
+
+```
+...
+import { HeroDetailComponent } from './hero-detail.component';
+
+@NgModule({
+  imports:      [
+    BrowserModule,
+    FormsModule // <-- import the FormsModule before binding with [(ngModel)]
+  ],
+  declarations: [
+    AppComponent,
+    HeroDetailComponent
+  ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+```
+
+- [Attribute Directives](https://angular.io/guide/attribute-directives#why-input) - Read more about `input` properties
+- [NgModules](https://angular.io/guide/ngmodule)
