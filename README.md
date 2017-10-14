@@ -18,3 +18,20 @@ git init
 ```
 
 Get `.gitignore` file from [https://github.com/angular/quickstart/blob/master/.gitignore](https://github.com/angular/quickstart/blob/master/.gitignore).
+
+Main files:
+
+```
+src
+|___ app
+| |___ app.component.ts		// the root component
+| |___ app.module.ts		// the root module. Right now it declares only the AppComponent
+|___ main.ts
+```
+
+- [The root module](https://angular.io/guide/bootstrapping)
+
+
+## #2 - The Hero Editor
+
+- [Displaying Data](https://angular.io/guide/displaying-data)
