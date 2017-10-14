@@ -34,4 +34,46 @@ src
 
 ## #2 - The Hero Editor
 
+
+### `src/app/app.component.ts`
+
+```
+...
+
+@Component({
+  ...
+  template: `
+    ...
+      <input [(ngModel)]="hero.name" placeholder="name">
+    ...
+  `
+})
+export class AppComponent  {
+  ...
+}
+```
+
+### `app.module.ts`
+
+```
+...
+import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
+
+...
+
+@NgModule({
+  imports:      [
+    ...
+    FormsModule // <-- import the FormsModule before binding with [(ngModel)]
+  ],
+  ...
+})
+export class AppModule { }
+
+```
+
 - [Displaying Data](https://angular.io/guide/displaying-data)
+- [Two-way data binding with ngModel](https://angular.io/guide/forms#ngModel)
+- [Forms](https://angular.io/guide/forms)
+- [Two-way binding with NgModel](https://angular.io/guide/template-syntax#ngModel)
+- [Template Syntax](https://angular.io/guide/template-syntax)
