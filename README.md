@@ -91,8 +91,17 @@ The `(*)` prefix to `ngFor` is a critical part of this syntax. It indicates that
   template: `
     ...
     <ul class="heroes">
-      <li *ngFor="let hero of heroes">{{hero.name}}</li>
+      <li *ngFor="let hero of heroes"
+          [class.selected]="hero === selectedHero"
+          (click)="onSelect(hero)">
+          <!-- The parentheses identify the <li> element's click event as the target -->
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </li>
     </ul>
+    <div *ngIf="selectedHero">
+      <h2>{{selectedHero.name}} details!</h2>
+      ...
+    </div>
     ...
   `,
   styles: [`
@@ -110,3 +119,8 @@ export class AppComponent  {
 ```
 
 - [Showing an array property with *ngFor](https://angular.io/guide/displaying-data#ngFor)
+- [User Input](https://angular.io/guide/user-input)
+- [Event binding](https://angular.io/guide/template-syntax#event-binding)
+- [Template Syntax](https://angular.io/guide/template-syntax)
+- [Structural Directives](https://angular.io/guide/structural-directives)
+- [Built-in directives](https://angular.io/guide/template-syntax#directives)
