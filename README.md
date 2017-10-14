@@ -211,11 +211,17 @@ Workflow:
 	1. and constructor `private` property)
 1. __Load__ data from the service
 	1. By implementing the Angular ngOnInit lifecycle hook
+1. Use __Promise__ to provide data asynchronously from the service
 
-> WARNING:
+> CONSTRUCTOR:
 >
 > - A constructor should not contain complex logic (especially a constructor that calls a server). 
 > - It is for simple initializations ()like wiring constructor parameters to properties).
+
+> PROMISE:
+> 
+> - A Promise essentially promises to call back when the results are ready. You ask an asynchronous service to do some work and give it a callback function. The service does that work and eventually calls the function with the results or an error.
+
 
 ### `src/app/hero.service.ts`
 
@@ -231,6 +237,13 @@ import { Hero } from './hero';
 @Injectable()
 export class HeroService {
   getHeroes(): Hero[] {  HEROES; }
+  promiseHeroes(): Promise<Hero[]> { return Promise.resolve(HEROES); }
+  promiseHeroesSlowly(): Promise<Hero[]> {
+    return new Promise(resolve => {
+      // Simulate server latency with 2 second delay
+      setTimeout(() => resolve(this.getHeroes()), 2000);
+    });
+  }
 }
 ```
 
@@ -256,7 +269,10 @@ export class AppComponent implements OnInit {
   // The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site.
   constructor(private heroService: HeroService) {}
 
-  getHeroes(): void { this.heroes = this.heroService.getHeroes(); }
+  getHeroes(): void { 
+    // this.heroes = this.heroService.getHeroes();  // initial synchronous call
+    this.heroService.promiseHeroesSlowly().then(heroes => this.heroes = heroes);
+  }
 
   ngOnInit(): void { this.getHeroes(); }
 
@@ -268,3 +284,5 @@ export class AppComponent implements OnInit {
   - For example, the filename for SpecialSuperHeroService is special-super-hero.service.ts.
 - [Dependency Injection](https://angular.io/guide/dependency-injection)
 - [Lifecycle Hooks](https://angular.io/guide/lifecycle-hooks)
+- [Promises for asynchronous programming](http://exploringjs.com/es6/ch_promises.html)
+- [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
