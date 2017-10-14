@@ -77,3 +77,36 @@ export class AppModule { }
 - [Forms](https://angular.io/guide/forms)
 - [Two-way binding with NgModel](https://angular.io/guide/template-syntax#ngModel)
 - [Template Syntax](https://angular.io/guide/template-syntax)
+
+
+## #3 - Master / Detail
+
+The `(*)` prefix to `ngFor` is a critical part of this syntax. It indicates that the `<li>` element and its children constitute a master template.
+
+
+```
+...
+@Component({
+  selector: 'my-app',
+  template: `
+    ...
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes">{{hero.name}}</li>
+    </ul>
+    ...
+  `,
+  styles: [`
+    .selected {
+      background-color: #CFD8DC !important;
+      color: white;
+    }
+    ...
+  `]
+})
+export class AppComponent  {
+  ...
+  heroes = HEROES;
+}
+```
+
+- [Showing an array property with *ngFor](https://angular.io/guide/displaying-data#ngFor)
