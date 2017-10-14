@@ -286,3 +286,45 @@ export class AppComponent implements OnInit {
 - [Lifecycle Hooks](https://angular.io/guide/lifecycle-hooks)
 - [Promises for asynchronous programming](http://exploringjs.com/es6/ch_promises.html)
 - [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
+
+## #6 - Routing / navigation
+
+> Routing is another name for navigation. The router is the mechanism for navigating from view to view.
+
+Workflow:
+
+1. Splitting the AppComponent
+
+### `src/app/heroes.component.ts`
+
+Rename the previous `app.component.ts`:
+
+```
+@Component({
+  selector: 'my-heroes',
+  ...
+})
+export class HeroesComponent implements OnInit {
+  ...
+}
+```
+
+### `src/app/app.component.ts`
+
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  template: `
+    <h1>{{title}}</h1>
+    <my-heroes></my-heroes>
+  `
+})
+export class AppComponent {
+  title: 'Tour of Heroes';
+}
+```
+
+- [Routing and Navigation](https://angular.io/guide/router)
