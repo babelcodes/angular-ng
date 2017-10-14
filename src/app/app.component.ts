@@ -1,21 +1,14 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
+
 import { Hero } from './hero';
+import { HeroService } from './hero.service';
 
-const HEROES: Hero[] = [
-  { id: 11, name: 'Mr. Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
-];
-
+// The providers array tells Angular to create a fresh instance of the HeroService when it creates an AppComponent.
+// The AppComponent, as well as its child components, can use that service to get hero data.
 @Component({
   selector: 'my-app',
+  providers: [HeroService],
   template: `
     <h1>{{title}}</h1>
 
@@ -81,7 +74,7 @@ const HEROES: Hero[] = [
     }
   `]
 })
-export class AppComponent  {
+export class AppComponent implements OnInit {
 
   title = 'Tour of Heroes';
 
@@ -91,10 +84,22 @@ export class AppComponent  {
   };
   selectedHero: Hero;
 
-  heroes = HEROES;
+  heroes: Hero[];
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+  }
+
+  // The constructor itself does nothing.
+  // The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site.
+  constructor(private heroService: HeroService) {}
+
+  getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
+  }
+
+  ngOnInit(): void {
+    this.getHeroes();
   }
 
 }

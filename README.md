@@ -194,3 +194,77 @@ export class AppModule { }
 
 - [Attribute Directives](https://angular.io/guide/attribute-directives#why-input) - Read more about `input` properties
 - [NgModules](https://angular.io/guide/ngmodule)
+
+
+## #5 - Services
+
+- Import the Angular Injectable function and apply that function as an @Injectable() decorator.
+- The `@Injectable()` decorator tells TypeScript to emit metadata about the service.
+- The metadata specifies that Angular may need to inject other dependencies into this service.
+
+Workflow:
+
+1. Create a __Mock__ to host data (move `HEROES` constant inside and export it)
+1. Create a __Service__ to provide data (via included mock)
+1. __Inject__ service in the __Component__ via:
+	1.  `providers` property of component metadata 
+	1. and constructor `private` property)
+1. __Load__ data from the service
+	1. By implementing the Angular ngOnInit lifecycle hook
+
+> WARNING:
+>
+> - A constructor should not contain complex logic (especially a constructor that calls a server). 
+> - It is for simple initializations ()like wiring constructor parameters to properties).
+
+### `src/app/hero.service.ts`
+
+```
+// Import the Angular Injectable function and apply that function as an @Injectable() decorator.
+// The @Injectable() decorator tells TypeScript to emit metadata about the service.
+// The metadata specifies that Angular may need to inject other dependencies into this service.
+import { Injectable } from '@angular/core';
+
+import { HEROES } from './mock-heroes';
+import { Hero } from './hero';
+
+@Injectable()
+export class HeroService {
+  getHeroes(): Hero[] {  HEROES; }
+}
+```
+
+### `src/app/app.component.ts`
+
+```
+...
+import { OnInit } from '@angular/core';
+import { HeroService } from './hero.service';
+
+// The providers array tells Angular to create a fresh instance of the HeroService when it creates an AppComponent.
+// The AppComponent, as well as its child components, can use that service to get hero data.
+@Component({
+  selector: 'my-app',
+  providers: [ HeroService ],
+  ...
+})
+export class AppComponent implements OnInit {
+
+  ...
+
+  // The constructor itself does nothing.
+  // The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site.
+  constructor(private heroService: HeroService) {}
+
+  getHeroes(): void { this.heroes = this.heroService.getHeroes(); }
+
+  ngOnInit(): void { this.getHeroes(); }
+
+}
+
+```
+
+- For a multi-word service name, use lower [dash-case](https://angular.io/guide/glossary#dash-case). 
+  - For example, the filename for SpecialSuperHeroService is special-super-hero.service.ts.
+- [Dependency Injection](https://angular.io/guide/dependency-injection)
+- [Lifecycle Hooks](https://angular.io/guide/lifecycle-hooks)
