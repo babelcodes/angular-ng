@@ -323,6 +323,10 @@ Workflow:
 		- Import the `Router` from the Angular router library.
 		- Inject the `Router` in the constructor, along with the `HeroService`.
 		- Implement `gotoDetail()` by calling the router `navigate()` method.
+1. Style the app
+	- Reference CSS file in the component metadata's `styleUrls` __array__ property 
+		- `styleUrls: [ './hero-detail.component.css' ]`
+	- Use the `routerLinkActive` directive (see below)
 
 
 ### Router outlet
@@ -339,6 +343,12 @@ To do this, you can add a `<router-outlet>` element (one of the directives provi
 Users shouldn't have to paste a route URL into the address bar. Instead, add an anchor tag to the template that, when clicked, triggers navigation to the `HeroesComponent`: 
 
 - `<a routerLink="/heroes">Heroes</a>`
+
+
+### The routerLinkActive directive:
+
+The Angular router provides a `routerLinkActive` directive you can use to add a class to the HTML navigation element whose route matches the active route. All you have to do is define the style for it.
+
 
 
 ### `src/app/heroes.component.ts`
