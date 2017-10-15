@@ -309,6 +309,8 @@ Workflow:
 1. Add Router links
 1. Create dashboard with route, external HTML template, injection of `HeroService`
 1. Crete redirect route for root
+1. Navigating to hero details (with parameterized route, add `HeroService.promiseHero()`)
+1. Find the way back
 
 
 ### Router outlet
@@ -360,6 +362,61 @@ export class AppComponent {
 }
 ```
 
+### `src/app/hero-detail.compnent.ts`
+
+```
+// Amend the @angular/core import statement to include the 'Input' symbol
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Location }                 from '@angular/common';
+
+import 'rxjs/add/operator/switchMap';
+
+import { HeroService } from './hero.service';
+
+import { Hero } from './hero';
+
+@Component({
+  selector: 'hero-detail',
+  templateUrl: './hero-detail.component.html'
+})
+export class HeroDetailComponent implements OnInit {
+
+  @Input() hero: Hero;
+
+  constructor(
+    private heroService: HeroService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
+
+  ngOnInit(): void {
+    this.route.paramMap
+      .switchMap((params: ParamMap) => this.heroService.promiseHero(+params.get('id')))
+      .subscribe(hero => this.hero = hero);
+  }
+
+  goBack(): void { this.location.back(); }
+
+}
+
+```
+
+### `src/app/hero.service.ts`
+
+```
+...
+@Injectable()
+export class HeroService {
+  promiseHero(id: number): Promise<Hero> {
+    return this.getHeroes()
+      .then(heroes => heroes.find(hero => hero.id === id));
+  }
+  ...
+}
+
+```
+
 ### `src/app/app.module.ts`
 
 ```
@@ -382,6 +439,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'heroes',
         component: HeroesComponent
+      },
+      {
+        path: 'hero/:id',
+        component: HeroDetailComponent
       }
     ])
   ],
@@ -392,3 +453,4 @@ export class AppModule { }
 
 - [Routing and Navigation](https://angular.io/guide/router):
 	- [Appendix: Link Parameters Array](https://angular.io/guide/router#link-parameters-array)
+- [CanDeactivate](https://angular.io/api/router/CanDeactivate) to prevent going back too far could take users out of the app
