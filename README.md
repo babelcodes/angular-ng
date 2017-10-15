@@ -316,7 +316,7 @@ Workflow:
 	- Binding to an expression containing a link parameters array having two elements: 
 		- the path of the destination route 
 		- and a route parameter set to the value of the current hero's id.
-
+1. Refactor `AppModule` to move the routing configuration into its own class
 
 
 ### Router outlet
@@ -423,40 +423,68 @@ export class HeroService {
 
 ```
 
+### `src/app/app-routing.module.ts`
+
+```
+...
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard',  component: DashboardComponent },
+  { path: 'detail/:id', component: HeroDetailComponent },
+  { path: 'heroes',     component: HeroesComponent }
+];
+ 
+@NgModule({
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
+})
+export class AppRoutingModule {}
+```
+
+- The Routing Module adds `RouterModule` to `exports` so that the components in the companion module have access to Router declarables, such as `RouterLink` and `RouterOutlet`.
+- There are no `declarations`. Declarations are the responsibility of the companion module.
+- If you have guard services, the Routing Module adds module `providers`. (There are none in this example.)
+
+
 ### `src/app/app.module.ts`
 
 ```
 ...
-import { RouterModule } from '@angular/router';
+// import { RouterModule } from '@angular/router';
 ...
 @NgModule({
   imports: [
     ...
-    RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-      {
-        path: 'heroes',
-        component: HeroesComponent
-      },
-      {
-        path: 'hero/:id',
-        component: HeroDetailComponent
-      }
-    ])
-  ],
+//    RouterModule.forRoot([
+//      {
+//        path: '',
+//        redirectTo: 'dashboard',
+//        pathMatch: 'full'
+//      },
+//      {
+//        path: 'dashboard',
+//        component: DashboardComponent
+//      },
+//      {
+//        path: 'heroes',
+//        component: HeroesComponent
+//      },
+//      {
+//        path: 'hero/:id',
+//        component: HeroDetailComponent
+//      }
+//    ])
+//  ],
   ...
 })
 export class AppModule { }
 ```
 
+
 - [Routing and Navigation](https://angular.io/guide/router):
 	- [Appendix: Link Parameters Array](https://angular.io/guide/router#link-parameters-array)
+	- [Route Guards](https://angular.io/guide/router#guards)
+	- [Milestone #2: The Routing Module](https://angular.io/guide/router#routing-module)
 - [CanDeactivate](https://angular.io/api/router/CanDeactivate) to prevent going back too far could take users out of the app
