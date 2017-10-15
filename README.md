@@ -317,6 +317,12 @@ Workflow:
 		- the path of the destination route 
 		- and a route parameter set to the value of the current hero's id.
 1. Refactor `AppModule` to move the routing configuration into its own class
+1. Select a hero in the `HeroesComponent`
+	- Replace the `<hero-detail>` tag in the template with inline summary
+	- Bind a button's click event to a `gotoDetail()` method that navigates imperatively by telling the router where to go:
+		- Import the `Router` from the Angular router library.
+		- Inject the `Router` in the constructor, along with the `HeroService`.
+		- Implement `gotoDetail()` by calling the router `navigate()` method.
 
 
 ### Router outlet
@@ -342,10 +348,14 @@ Rename the previous `app.component.ts`:
 ```
 @Component({
   selector: 'my-heroes',
-  ...
+  templateUrl: './heroes.component.html',
+  styleUrls: [ './heroes.component.css' ] // The styleUrls property is an array of style file names (with paths)
 })
 export class HeroesComponent implements OnInit {
-  ...
+  ...  
+  gotoDetail(): void {
+    this.router.navigate(['/hero', this.selectedHero.id]);
+  }
 }
 ```
 
@@ -364,7 +374,7 @@ import { Component } from '@angular/core';
   `
 })
 export class AppComponent {
-  title: 'Tour of Heroes';
+  title: 'Tour of Heroes';    
 }
 ```
 
@@ -488,3 +498,4 @@ export class AppModule { }
 	- [Route Guards](https://angular.io/guide/router#guards)
 	- [Milestone #2: The Routing Module](https://angular.io/guide/router#routing-module)
 - [CanDeactivate](https://angular.io/api/router/CanDeactivate) to prevent going back too far could take users out of the app
+- [Pipes](https://angular.io/guide/pipes)
