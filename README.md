@@ -517,13 +517,14 @@ export class AppModule { }
 
 1. Register for HTTP services
 1. Simulate the web API (`InMemoryWebApiModule.forRoot(InMemoryDataService)`)
-1. Use HTTP call in the hero service promise
+1. Use HTTP call in the hero service promise (convert HTTP Get call response from Observable to Promise.)
 
 		return this.http.get(this.heroesUrl)	
              .toPromise()  // import 'rxjs/add/operator/toPromise';
              .then(response => response.json().data as Hero[])
              .catch(this.handleError);
 
+1. Get hero by id (vs currently fetches all heroes and filters for the one with the matching id)
 
 
 > The Angular http.get returns an RxJS Observable
