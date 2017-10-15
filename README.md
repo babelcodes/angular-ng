@@ -509,3 +509,101 @@ export class AppModule { }
 	- [Milestone #2: The Routing Module](https://angular.io/guide/router#routing-module)
 - [CanDeactivate](https://angular.io/api/router/CanDeactivate) to prevent going back too far could take users out of the app
 - [Pipes](https://angular.io/guide/pipes)
+
+
+## #7- HTTP
+
+> The in-memory web API is only useful in the early stages of development and for demonstrations such as this Tour of Heroes. Don't worry about the details of this backend substitution; you can skip it when you have a real web API server.
+
+1. Register for HTTP services
+1. Simulate the web API (`InMemoryWebApiModule.forRoot(InMemoryDataService)`)
+1. Use HTTP call in the hero service promise
+
+		return this.http.get(this.heroesUrl)	
+             .toPromise()  // import 'rxjs/add/operator/toPromise';
+             .then(response => response.json().data as Hero[])
+             .catch(this.handleError);
+
+
+
+> The Angular http.get returns an RxJS Observable
+> 
+### `src/app/app.module.ts`
+
+```
+...
+import { HttpModule }   from '@angular/http';
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
+...
+
+@NgModule({
+  imports: [
+    ...
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    ...
+  ],
+  ...
+})
+export class AppModule { }
+```
+
+### `src/app/in-memory-data.service.ts`
+```
+import { InMemoryDbService } from 'angular-in-memory-web-api';
+
+export class InMemoryDataService implements InMemoryDbService {
+  createDb() {
+    const heroes = [
+      { id: 0,  name: 'Zero' },
+      { id: 11, name: 'Mr. Nice' },
+      { id: 12, name: 'Narco' },
+      ...
+      { id: 19, name: 'Magma' },
+      { id: 20, name: 'Tornado' }
+    ];
+    return { heroes };
+  }
+}
+```
+
+### `src/app/hero.service.ts`
+
+```
+...
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+// import { HEROES } from './mock-heroes';
+...
+
+@Injectable()
+export class HeroService {
+
+  private heroesUrl = 'api/heroes';  // URL to web api
+
+  constructor(private http: Http) {}
+
+  ...
+
+  // getHeroes(): Promise<Hero[]> {
+  //  return Promise.resolve(HEROES);
+  // }
+  getHeroes(): Promise<Hero[]> {
+    return this.http.get(this.heroesUrl)
+      .toPromise()
+      .then(response => response.json().data as Hero[])
+      .catch(this.handleError);
+  }
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
+
+  ...
+}
+```
+
+- [Observables](https://angular.io/tutorial/toh-pt6#observables)
+- [Operators](https://angular.io/tutorial/toh-pt6#rxjs-imports)
