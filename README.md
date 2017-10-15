@@ -311,6 +311,12 @@ Workflow:
 1. Crete redirect route for root
 1. Navigating to hero details (with parameterized route, add `HeroService.promiseHero()`)
 1. Find the way back
+1. Select a dashboard hero (with argument on  `[routerLink]` from dashboard link)
+	- `<a *ngFor="let hero of heroes" [routerLink]="['/hero', hero.id]" class="col-1-4">`
+	- Binding to an expression containing a link parameters array having two elements: 
+		- the path of the destination route 
+		- and a route parameter set to the value of the current hero's id.
+
 
 
 ### Router outlet
