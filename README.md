@@ -526,6 +526,7 @@ export class AppModule { }
 
 1. Get hero by id (vs currently fetches all heroes and filters for the one with the matching id)
 1. Updating hero details (with `this.http.put(...).toPromise().then(...).catch(...)`)
+1. Ability to add heroes
 
 
 > The Angular http.get returns an RxJS Observable
