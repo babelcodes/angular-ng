@@ -525,6 +525,7 @@ export class AppModule { }
              .catch(this.handleError);
 
 1. Get hero by id (vs currently fetches all heroes and filters for the one with the matching id)
+1. Updating hero details (with `this.http.put(...).toPromise().then(...).catch(...)`)
 
 
 > The Angular http.get returns an RxJS Observable
@@ -586,12 +587,18 @@ export class HeroService {
 
   constructor(private http: Http) {}
 
-  ...
+  promiseHero(id: number): Promise<Hero> {
+    // return this.getHeroes()
+    //   .then(heroes => heroes.find(hero => hero.id === id));
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json().data as Hero)
+      .catch(this.handleError);
+  }
 
-  // getHeroes(): Promise<Hero[]> {
-  //  return Promise.resolve(HEROES);
-  // }
   getHeroes(): Promise<Hero[]> {
+    // return Promise.resolve(HEROES);
     return this.http.get(this.heroesUrl)
       .toPromise()
       .then(response => response.json().data as Hero[])
@@ -600,6 +607,15 @@ export class HeroService {
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
+  }
+
+  update(hero: Hero): Promise<Hero> {
+    const url = `${this.heroesUrl}/${hero.id}`;
+    return this.http
+      .put(url, JSON.stringify(hero), {headers: this.headers})
+      .toPromise()
+      .then(() => hero)
+      .catch(this.handleError);
   }
 
   ...

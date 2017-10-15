@@ -2,7 +2,7 @@
 // The @Injectable() decorator tells TypeScript to emit metadata about the service.
 // The metadata specifies that Angular may need to inject other dependencies into this service.
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -13,6 +13,8 @@ import { Hero } from './hero';
 export class HeroService {
 
   private heroesUrl = 'api/heroes';  // URL to web api
+
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {}
 
@@ -45,6 +47,15 @@ export class HeroService {
       // Simulate server latency with 2 second delay
       setTimeout(() => resolve(this.getHeroes()), 2000);
     });
+  }
+
+  update(hero: Hero): Promise<Hero> {
+    const url = `${this.heroesUrl}/${hero.id}`;
+    return this.http
+      .put(url, JSON.stringify(hero), {headers: this.headers})
+      .toPromise()
+      .then(() => hero)
+      .catch(this.handleError);
   }
 
 }
