@@ -307,6 +307,9 @@ Workflow:
 1. Configure routes by using `RouterModule.forRoot` in `AppModule` metadata (`@NgModule` decorator)
 1. Add the Router outlet
 1. Add Router links
+1. Create dashboard with route, external HTML template, injection of `HeroService`
+1. Crete redirect route for root
+
 
 ### Router outlet
 
@@ -368,6 +371,15 @@ import { RouterModule } from '@angular/router';
     ...
     RouterModule.forRoot([
       {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
         path: 'heroes',
         component: HeroesComponent
       }
@@ -378,7 +390,5 @@ import { RouterModule } from '@angular/router';
 export class AppModule { }
 ```
 
-- [Routing and Navigation](https://angular.io/guide/router)
 - [Routing and Navigation](https://angular.io/guide/router):
-	- [Set the base href](https://angular.io/guide/router)
 	- [Appendix: Link Parameters Array](https://angular.io/guide/router#link-parameters-array)

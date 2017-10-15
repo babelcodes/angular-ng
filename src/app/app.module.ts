@@ -4,6 +4,7 @@ import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
 import { RouterModule } from '@angular/router';
 
 import { AppComponent }  from './app.component';
+import { DashboardComponent }  from './dashboard.component';
 import { HeroesComponent } from './heroes.component';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroService } from './hero.service';
@@ -14,6 +15,15 @@ import { HeroService } from './hero.service';
     FormsModule, // <-- import the FormsModule before binding with [(ngModel)]
     RouterModule.forRoot([
       {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
         path: 'heroes',
         component: HeroesComponent
       }
@@ -21,6 +31,7 @@ import { HeroService } from './hero.service';
   ],
   declarations: [
     AppComponent,
+    DashboardComponent,
     HeroesComponent,
     HeroDetailComponent
   ],
