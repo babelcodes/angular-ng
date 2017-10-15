@@ -294,7 +294,35 @@ export class AppComponent implements OnInit {
 
 Workflow:
 
-1. Splitting the AppComponent
+1. Splitting the `AppComponent`
+	- Rename it into `HeroesComponent`
+	- And include it from new empty `AppComponent`
+1. Use the Angular router to enable navigation.
+	- The Angular router is an external, optional Angular NgModule called `RouterModule`.
+	- The router is a combination of:
+		- multiple provided __services__ (`RouterModule`), 
+		- multiple __directives__ (`RouterOutlet`, `RouterLink`, `RouterLinkActive`), 
+		- and a __configuration__ (`Routes`)
+1. Open `index.html` and ensure there is a `<base href="/">` element at the top of the `<head>` section.
+1. Configure routes by using `RouterModule.forRoot` in `AppModule` metadata (`@NgModule` decorator)
+1. Add the Router outlet
+1. Add Router links
+
+### Router outlet
+
+If you paste the path `/heroes` into the browser address bar at the end of the URL, the router should match it to the heroes route and display the `HeroesComponent`. However, you have to tell the router where to display the component.
+
+To do this, you can add a `<router-outlet>` element (one of the directives provided by the `RouterModule`) at the end of the template. The router displays each component immediately below the `<router-outlet>` as users navigate through the app.
+
+- `<router-outlet></router-outlet>`
+
+
+### Router links
+
+Users shouldn't have to paste a route URL into the address bar. Instead, add an anchor tag to the template that, when clicked, triggers navigation to the `HeroesComponent`: 
+
+- `<a routerLink="/heroes">Heroes</a>`
+
 
 ### `src/app/heroes.component.ts`
 
@@ -319,7 +347,9 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
-    <my-heroes></my-heroes>
+    <!-- <my-heroes></my-heroes> -->
+    <a routerLink="/heroes">Heroes</a>
+    <router-outlet></router-outlet>
   `
 })
 export class AppComponent {
@@ -327,4 +357,28 @@ export class AppComponent {
 }
 ```
 
+### `src/app/app.module.ts`
+
+```
+...
+import { RouterModule } from '@angular/router';
+...
+@NgModule({
+  imports: [
+    ...
+    RouterModule.forRoot([
+      {
+        path: 'heroes',
+        component: HeroesComponent
+      }
+    ])
+  ],
+  ...
+})
+export class AppModule { }
+```
+
 - [Routing and Navigation](https://angular.io/guide/router)
+- [Routing and Navigation](https://angular.io/guide/router):
+	- [Set the base href](https://angular.io/guide/router)
+	- [Appendix: Link Parameters Array](https://angular.io/guide/router#link-parameters-array)
