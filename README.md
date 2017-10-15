@@ -525,12 +525,14 @@ export class AppModule { }
              .catch(this.handleError);
 
 1. Get hero by id (vs currently fetches all heroes and filters for the one with the matching id)
-1. Updating hero details (with `this.http.put(...).toPromise().then(...).catch(...)`)
-1. Ability to add heroes
+1. Updating hero details (`this.http.put(...).toPromise().then(...).catch(...)`)
+1. Ability to add heroes (`this.http.post(...).toPromise().then(...).catch(...)`)
+1. Ability to delete a hero (`this.http.delete(...).toPromise().then(...).catch(...)`)
 
 
 > The Angular http.get returns an RxJS Observable
 > 
+
 ### `src/app/app.module.ts`
 
 ```
@@ -619,7 +621,22 @@ export class HeroService {
       .catch(this.handleError);
   }
 
-  ...
+  create(name: string): Promise<Hero> {
+    return this.http
+      .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json().data as Hero)
+      .catch(this.handleError);
+  }
+
+  delete(id: number): Promise<void> {
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
+  }
+
 }
 ```
 
