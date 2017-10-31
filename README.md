@@ -2,6 +2,24 @@
 
 - [https://angular.io/tutorial/toh-pt1](https://angular.io/tutorial/toh-pt1)
 
+Table of content:
+
+- [Resources](#-resources)
+- [#1 - Setup](#1---setup)
+- [#2 - The Hero Editor](#2---the-hero-editor)
+- [#3 - Master / Detail](#3---master--detail)
+- [#4 - Multiple Components](#4---multiple-components)
+- [#5 - Services](#5---services)
+- [#6 - Routing / navigation](#6---routing--navigation)
+- [#7 - HTTP](#7---http)
+
+
+## Resources
+
+- [angular-cli](https://github.com/angular/angular-cli)
+- [Angular Style Guide](https://angular.io/guide/styleguide)
+
+
 ## #1 - Setup
 
 ```
@@ -511,7 +529,7 @@ export class AppModule { }
 - [Pipes](https://angular.io/guide/pipes)
 
 
-## #7- HTTP
+## #7 - HTTP
 
 > The in-memory web API is only useful in the early stages of development and for demonstrations such as this Tour of Heroes. Don't worry about the details of this backend substitution; you can skip it when you have a real web API server.
 
