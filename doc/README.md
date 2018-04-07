@@ -1,10 +1,11 @@
-Table of content:
+## Table of content
 
 - [Tree](#tree)
 - [Syntax](#syntax)
 - [Module](#module)
   - Feature Modules
 - [Component](#component)
+  - Smart / Container or Dumb / Presentational 
 - [Router](#router)
 - [Service](#service)
 - Directive
@@ -86,7 +87,7 @@ Add it to an HTML page:
 * Smart / Container component
   * Communicate with services
   * Render child components
-* [Dumb / Presentational component]](presentational-component.md)
+* [Dumb / Presentational component](presentational-component.md)
   * Accept data via inputs
   * Emit data changes via event outputs
 

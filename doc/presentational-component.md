@@ -1,3 +1,5 @@
+[Go back to home](https://github.com/babelcodes/angular-ng/tree/master/doc)
+
 # Dumb / Presentational component
 
 * Accept data via inputs
