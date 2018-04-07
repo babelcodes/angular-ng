@@ -15,7 +15,11 @@
   - Interface
   - Enum
 
-See also
+Advanced:
+
+- [NGRX Store](ngrx-store.md)
+
+See also:
 
 - [Firebase](firebase.md)
 - [Quickstart](quickstart.md)
