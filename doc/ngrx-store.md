@@ -3,20 +3,20 @@
 # NGRX Store
 
 
-## Redux: three principles
+## Redux: 3 principles
 
-__1\. Single source of truth__
+### 1\. Single source of truth
  - One state tree inside store
 - Predictability maintability
 - Universal apps (ssr)
 - Testing and debugging
 
-__2\. State is read-only__
+### 2\. State is read-only
 - Derive properties from state
 - Dispatch actions to change the state
 - Immutable update patterns
 
-_3\. Pure functions update state__
+### 3\. Pure functions update state
 - Pure functions are reducers
 - REducers respond to action types
 - Reducers return new state
