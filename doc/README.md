@@ -10,7 +10,7 @@
 - [Service](#service)
 - Directive
 - Pipe `{{ myVar | json }}`
-- Typescript:
+- [Typescript](http://babel.codes/TypeScript/index)
   - Class
   - Interface
   - Enum
