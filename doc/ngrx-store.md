@@ -5,10 +5,6 @@
 
 ## Redux: three principles
 
-1. single source of truth
-1. State is read-only
-1. Pure functions update state
-
 __1\. Single source of truth__
  - One state tree inside store
 - Predictability maintability
@@ -20,18 +16,18 @@ __2\. State is read-only__
 - Dispatch actions to change the state
 - Immutable update patterns
 
-### 3\. Pure functions update state
+_3\. Pure functions update state__
 - Pure functions are reducers
 - REducers respond to action types
 - Reducers return new state
 
 ## Redux: Core Concepts
 
-- Single state tree
-- Actions
-- Reducers
-- Store
-- One-way data flow
+- [Single state tree](#single-state-tree)
+- [Actions](#actions)
+- [Reducers](#reducers)
+- [Store](#store)
+- [One-way data flow](#one-way-data-flow)
 
 ### Single state tree
 
