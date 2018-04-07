@@ -9,18 +9,18 @@
 1. State is read-only
 1. Pure functions update state
 
-1\. Single source of truth
+### 1\. Single source of truth
  - One state tree inside store
 - Predictability maintability
 - Universal apps (ssr)
 - Testing and debugging
 
-2\. State is read-only
+### 2\. State is read-only
 - Derive properties from state
 - Dispatch actions to change the state
 - Immutable update patterns
 
-3\. Pure functions update state
+### 3\. Pure functions update state
 - Pure functions are reducers
 - REducers respond to action types
 - Reducers return new state
@@ -33,12 +33,12 @@
 - Store
 - One-way data flow
 
-Single state tree
+### Single state tree
 
 - Plain javascript object
 - Composed by reducers
 
-###Actions
+### Actions
 
 - Two properties
     - Type: string, describes event
@@ -52,7 +52,7 @@ const action = {
 }
 ```
 
-###Reducers
+### Reducers
 
 - Pure functions
 - Given dispatched action
@@ -81,7 +81,7 @@ const state = {
 }
 ```
 
-###Store
+### Store
 
 - State container
 - Components interact with the Store
@@ -91,7 +91,7 @@ const state = {
 - Reducers compose new State
 - Store is updated, notifies subscribers
 
-###One-way data flow
+### One-way data flow
 
 ```
                        ┏ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┓
