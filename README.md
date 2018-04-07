@@ -1,6 +1,7 @@
 # Angular ng (v2+)
 
 - [Documentation](doc/README.md)
+  - [NGRX Store](doc/ngrx-store.md)
   - [Firebase](doc/firebase.md)
   - [Quickstart](doc/quickstart.md)
 - [Tutorial: Tour of Heroes](cod/README.md)
