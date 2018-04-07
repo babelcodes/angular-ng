@@ -1,9 +1,9 @@
 # Angular ng (v2+)
 
 - [Documentation](doc/README.md)
-  - [Firebase](firebase.md)
-  - [Quickstart](quickstart.md)
-- [Tutorial: Tour of Heroes](TUTORIAL.md)
+  - [Firebase](doc/firebase.md)
+  - [Quickstart](doc/quickstart.md)
+- [Tutorial: Tour of Heroes](cod/README.md)
 
 
 ## Resources
