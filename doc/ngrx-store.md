@@ -126,7 +126,7 @@ const state = {
 
 > « An immutable object is an object whose state cannot be modified after creation »
 
-Implies (update) copy
+Implies (use / update) copy
 
 Why ?
 - Predictability
@@ -134,3 +134,58 @@ Why ?
 - Performance (Change detection)
 - Mutation tracking
 - Undo state changes
+
+### Mutable in JavaScript (by design)
+
+Object:
+
+```
+const character = { name: 'Han Solo' };
+character.role = 'Captain';
+
+console.log(character); // ==> { name: 'Han Solo', role: 'Captain' }
+```
+
+Array:
+
+```
+const names = ['Han Solo', 'Darth Vader'];
+names.push('R2-D2');
+
+console.log(names); // ==> ['Han Solo', 'Darth Vader', 'R2-D2']
+```
+
+
+### Immutability in JavaScript (by design)
+
+Immutable by design (String):
+
+```
+const name = 'Han Solo';
+const uppercaseName = name.toUpperCase();
+
+console.log(name, uppercaseName); // ==> 'Han Solo', 'HAN SOLO'
+```
+
+Immutable operations (Object):
+
+```
+const character = { name: 'Han Solo' };
+
+// Object.assign({}, character, { role: 'Captain' });
+const updatedCharacter = { ...character, role: 'Captain' };
+
+console.log(character); // ==> { name: 'Han Solo' }
+console.log(updatedCharacter); // ==> { name: 'Han Solo', role: 'Captain' }
+```
+
+Immutable operations (Array):
+
+```
+const names = ['Han Solo', 'Darth Vader'];
+const newNames = [...names, 'R2-D2'];
+
+console.log(names); // ==> ['Han Solo', 'Darth Vader']
+
+console.log(newNames); // ==> ['Han Solo', 'Darth Vader', 'R2-D2']
+```
