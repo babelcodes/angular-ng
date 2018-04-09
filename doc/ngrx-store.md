@@ -189,3 +189,66 @@ console.log(names); // ==> ['Han Solo', 'Darth Vader']
 
 console.log(newNames); // ==> ['Han Solo', 'Darth Vader', 'R2-D2']
 ```
+
+## ngrx/store
+
+- Based on Redux
+- Written with Observables
+- Made for Angular
+
+### Benefits
+
+- Single source of truth
+- Testability
+- Performance benefits
+  - `ChangeDetectionStrategy.OnPush`
+  - Immutable `@Inputs`
+  - Object reference checks are fast
+- Root and feature module support
+  - Eagerly loaded modules
+  - Lazily loaded modules
+
+Container
+
+- Aware of Store
+- Dispatches Actions
+- Reads data from Store
+
+Presentational 
+
+- Not awake of Store
+- Invokes callbacks via `@Output`
+- Read data from `@Inputs` 
+
+### Reactive Angular
+
+```
+                             ┌─────────┐                        
+                             │         │                        
+                             │  Store  │                        
+                             │         │                        
+                             └─────────┘                        
+                                                                
+                               ▲    │                           
+                                    │                           
+                    Dispatch   │    │    Select                 
+                                    │                           
+                               │    ▼                           
+                      ┌───────────────────────┐                 
+                      │                       │                 
+                      │       Container       │                 
+                      │       Component       │                 
+                      │                       │                 
+                      └───────────────────────┘                 
+                        ▲  │             ▲  │                   
+                           │                │                   
+              @Ouput    │  │             │  │    @Input         
+                           │                │                   
+                        │  ▼             │  ▼                   
+      ┌───────────────────────┐        ┌───────────────────────┐
+      │                       │        │                       │
+      │       Presenta.       │        │       Presenta.       │
+      │       Component       │        │       Component       │
+      │                       │        │                       │
+      └───────────────────────┘        └───────────────────────┘
+```
