@@ -8,6 +8,8 @@
   - Smart / Container or Dumb / Presentational 
 - [Router](#router)
 - [Service](#service)
+- [Resolver](#resolver)
+- Interceptor
 - Directive
 - Pipe `{{ myVar | json }}`
 - [Typescript](http://babel.codes/TypeScript/index)
@@ -111,3 +113,8 @@ TODO.
 ng g service components/project/services/project
 ng g module components/project
 ```
+
+
+## Resolver
+
+See [Resolver page](/resolver.md)
