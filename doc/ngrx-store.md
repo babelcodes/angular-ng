@@ -39,6 +39,8 @@
   - slice we need to a particular component
 - `Effect`
   - ngrx/effects
+  - Register to `actions$` observable to receive actions observable and dispatch another action
+  - Maybe request a service between
 
 
 
@@ -574,4 +576,18 @@ Completing the "One-way data flow" viewed before:
                        ┃                                                                   ┃  ┃ │   Server    │     ┃  
                                                                                                 └─────────────┘        
                        ┗ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┛  ┗ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┛  
+```
+
+```
+@Effects
+loadPizzas$ = this.actions$.ofType(pizzaActions.LOAD_PIZZAS).pipe(
+  switchMap(() => {
+    return this.pizzaService
+      .getPizzas()
+      .pipe(
+        map(pizzas => new pizzaActions.LoadPizzasSuccess(pizzas)),
+        catchError(error => of(new pizzaActions.LoadPizzasSuccess(pizzas)))
+      );
+  })
+);
 ```
