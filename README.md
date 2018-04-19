@@ -5,7 +5,30 @@
   - [Firebase](doc/firebase.md)
   - [Quickstart](doc/quickstart.md)
 - [Tutorial: Tour of Heroes](cod/README.md)
+- Styleguides
+  - [google/ts-style: ☂️ TypeScript style guide, formatter, and linter.](https://github.com/google/ts-style)
+  - [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html#features-arrays-trailing-comma)
 
+## Advanced
+
+- NGXS - _a state management pattern + library for Angular (a NgRx alternative)_
+  - [Introduction - NGXS](https://ngxs.gitbook.io/ngxs)
+  - [NGXS Quick Start Tutorial | AngularFirebase](https://angularfirebase.com/lessons/ngxs-quick-start-angular-state-management/)
+- Nrwl - _An open source toolkit for enterprise Angular applications_
+  - [nrwl.io/nx](https://nrwl.io/nx)
+  - [nrwl/nx: Nrwl Extensions for Angular](https://github.com/nrwl/nx)
+
+
+## Tools
+
+- [TSLint](https://palantir.github.io/tslint/)
+
+http://blog.mgechev.com/2017/04/23/angular-tooling-codelyzer-angular-cli-ngrev/
+
+- [compodoc](https://github.com/compodoc) - The missing documentation tool for your Angular application
+- [codelyzer](https://github.com/mgechev/codelyzer) - ally verify that given project follows the official Angular Style Guide
+- [Augury](https://chrome.google.com/webstore/detail/augury/elgalmkoelokbchhkhacckoklkejnhcd) - Chrome extension which will plug into our Chrome DevTools. Once loaded, it will help us explore the relations between the individual components in our application which are visible on the page.
+- [ngrev](https://github.com/mgechev/ngrev) - tool for reverse engineering of Angular applications which allows us to visually explore the individual building blocks forming our project
 
 ## Resources
 
@@ -23,9 +46,8 @@
 - [material.angular.io](https://material.angular.io/)
   - [material.io/guidelines](https://material.io/guidelines/)
 
+
 ### Courses
 
 - [Todd Motto](https://platform.ultimateangular.com/courses/)
-
-
-
+- [AngularFirebase.com](https://angularfirebase.com)
