@@ -124,9 +124,9 @@ const action = {
 ```
 function reducer(state, action) {
   switch(action.type) {
-    Case 'ADD_TODO': {
-      const toto = action.payload;
-      const totos = [...state.todos, todo];
+    case 'ADD_TODO': {
+      const todo = action.payload;
+      const todos = [...state.todos, todo];
     }
   }
   return state;
@@ -448,7 +448,7 @@ import { Pizza } from '../../models/pizza.model';
 
 export class ProductsComponent implements OnInit {
 
-  constructor(private store. Store<fromStore.ProductsState>) {}
+  constructor(private store: Store<fromStore.ProductsState>) {}
 
   ngOnInit() {
     this.store.select<any>('products').subscribe(state => console.log(state); );
@@ -579,15 +579,24 @@ Completing the "One-way data flow" viewed before:
 ```
 
 ```
-@Effects
-loadPizzas$ = this.actions$.ofType(pizzaActions.LOAD_PIZZAS).pipe(
-  switchMap(() => {
-    return this.pizzaService
-      .getPizzas()
-      .pipe(
-        map(pizzas => new pizzaActions.LoadPizzasSuccess(pizzas)),
-        catchError(error => of(new pizzaActions.LoadPizzasSuccess(pizzas)))
-      );
-  })
-);
+@Injectable()
+export class PizzasEffects {
+
+  @Effects
+  loadPizzas$ = this.actions$.ofType(pizzaActions.LOAD_PIZZAS).pipe(
+    switchMap(() => {
+      return this.pizzaService
+        .getPizzas()
+        .pipe(
+          map(pizzas => new pizzaActions.LoadPizzasSuccess(pizzas)),
+          catchError(error => of(new pizzaActions.LoadPizzasSuccess(pizzas)))
+        );
+    })
+  );
+
+  constructor(
+    private actions$: Actions,
+    private pizzaService: PizzasService,
+  ) {}
+}
 ```
