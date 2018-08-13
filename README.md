@@ -34,6 +34,8 @@ http://blog.mgechev.com/2017/04/23/angular-tooling-codelyzer-angular-cli-ngrev/
 
 ### Tutorials
 
+[fausfore/ngrx-french-guide: Le guide sur l'utilisation de NGRX dans une application Angular](https://github.com/fausfore/ngrx-french-guide)
+
 - [style guide](https://angular.io/guide/styleguide#rule-of-one)
 - [dependency injection](https://angular.io/guide/dependency-injection)
 - [lifecycle hooks](https://angular.io/guide/lifecycle-hooks)
