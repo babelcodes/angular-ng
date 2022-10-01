@@ -2,12 +2,9 @@
 
 - [Tree](#tree)
 - [Syntax](#syntax)
-- [Module](#module)
   - Feature Modules
 - [Component](#component)
   - Smart / Container or Dumb / Presentational 
-- [Router](#router)
-- [Service](#service)
 - [Resolver](#resolver)
 - Interceptor
 - Directive
@@ -51,15 +48,6 @@ Databinding:
 ```
 
 
-
-## Module
-
-### Feature Modules
-
-See [Feature Modules page](features/feature-module.md)
-
-
-
 ## Component
 
 ```
@@ -100,19 +88,6 @@ Add it to an HTML page:
 One-way dataflow:
 - data flows down
 - events emit up
-
-
-## Router
-
-TODO.
-
-
-## Service
-
-```
-ng g service components/project/services/project
-ng g module components/project
-```
 
 
 ## Resolver

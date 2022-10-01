@@ -5,6 +5,13 @@
 - https://www.youtube.com/watch?v=yQ5OJP5pwEM&list=PLrbLGOB571zeR7FUQifKmjUpT4ImldCPt&index=33
 - https://www.youtube.com/watch?v=YWODt4wzziU&list=PLrbLGOB571zeR7FUQifKmjUpT4ImldCPt&index=34
 
+## Feature Modules
+
+See [Feature Modules page](./feature-module.md)
+
+
+## Architecture
+
 ```shell
 app
   - hotels
@@ -16,10 +23,13 @@ app
     - services
 ```
 
+## Generate
+
 ```shell
 $ ng g m hotels/hotel --flat -m app
 ```
 
+## Code
 ```typescript
 @NgModule({
   declarations: [
@@ -34,7 +44,9 @@ $ ng g m hotels/hotel --flat -m app
         { path: 'hotels/:id', component: 'HotelDetailCompoenent', canActivate: [HotelDetailGuard] },
         { path: 'hotels', component: 'HotelListCompoenent' }
       ])
-  ]
+  ],
+  providers: [],
+  bootstrap: [],
 })
 export class HotelModule {}
 ```
@@ -60,6 +72,8 @@ $ ng g m hotels/hotel-routing --flat
       ])
   ],
   exports: [RouterModule],
+  providers: [],
+  bootstrap: [],
 })
 export class HotelRoutingModule {}
 ```
