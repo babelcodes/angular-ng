@@ -19,6 +19,13 @@
 - [Features Module](./doc/features/feature-module.md)
 
 
+### Routing
+
+Route, Routers, route's params:
+
+- [Routing](./doc/features/routing.md)
+
+
 ### Forms
 
 - [Forms](./doc/features/form.md)
