@@ -56,7 +56,7 @@ Databinding:
 
 ### Feature Modules
 
-See [Feature Modules page](feature-module.md)
+See [Feature Modules page](features/feature-module.md)
 
 
 
