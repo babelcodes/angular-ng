@@ -3,15 +3,28 @@
 # RxJS & Observables
 
 > Reactive Extensions Library for JavaScript
+> Manage events arriving in an asynchronous way.
 
 - https://rxjs.dev
 - [Tutoriel Angular #25 - RxJS et les Observables + exemples dynamiques](https://www.youtube.com/watch?v=aZcPIkSKHv4&list=PLrbLGOB571zeR7FUQifKmjUpT4ImldCPt&index=26&t=5s)
 - [Tutoriel Angular #26 - HttpClient & Error Handling avec RxJS](https://www.youtube.com/watch?v=w1PLZ6WptW4&list=PLrbLGOB571zeR7FUQifKmjUpT4ImldCPt&index=27&t=63s)
-- 
+
+
+## Get started
+
+- The packages `Http`, `Forms` and `Router` are built on RxJS
+- `Observable.subscribe()` may provide several values (mutable) vs. `Promise.then()` that provide a single value (immutable).
+
 
 ## Reference
 
 ### Observable
+
+- You need to `subscribe()` and maybe to `unsubscribe()`
+- `operators` handle `observables`:
+  - map, filter, concat, find, take...
+- Usage and composition with `pipe()` 
+- Two packages: `rxjs` and `rxjs/operators`
 
 ```typescript
 import {
@@ -33,6 +46,20 @@ const subscription = stream.subscribe(
 
 subscription.unsubscribe();
 ```
+
+### Sample
+
+````typescript
+import { Observable, range } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
+
+const source$: Observable<number> = range(0, 10);
+source$.pipe(
+    map(i => i * 3),
+    filter(i => i % 2 === 0)
+).subscribe(console.log);
+````
+
 
 ### Subscriptions
 
@@ -96,4 +123,11 @@ const stream = fromEvent(this.myDOMElement.nativeElement, 'click')
 
 ## Resources
 - https://youtu.be/-_XO5u-2UbQ?list=PLrbLGOB571zc3s8Mu4d1H-1PNzn6vc1Mb
+
+### Playgrounds
+
+- [Rxjs Playground](https://rxjs-playground.github.io/#/)
+- [RxJS playground and examples](https://thinkrx.io/rxjs/)
+- [Operators - Learn RxJS](https://www.learnrxjs.io/learn-rxjs/operators)
+- [RxViz - Animated playground for Rx Observables](https://rxviz.com/)
 
