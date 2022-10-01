@@ -72,3 +72,7 @@ export class HodelEditComponent implements OnInit {
   {{formBuilder.value | json}}
 </pre>
 ```
+
+## Confirm on quite dirty
+
+See [Guards, Deactivate](./guards.md).
