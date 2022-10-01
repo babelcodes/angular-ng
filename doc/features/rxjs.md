@@ -8,6 +8,8 @@
 - https://rxjs.dev
 - [Tutoriel Angular #25 - RxJS et les Observables + exemples dynamiques](https://www.youtube.com/watch?v=aZcPIkSKHv4&list=PLrbLGOB571zeR7FUQifKmjUpT4ImldCPt&index=26&t=5s)
 - [Tutoriel Angular #26 - HttpClient & Error Handling avec RxJS](https://www.youtube.com/watch?v=w1PLZ6WptW4&list=PLrbLGOB571zeR7FUQifKmjUpT4ImldCPt&index=27&t=63s)
+- See [HTTP Client](./httpclient.md) to use them in component
+- See [Services](./services.md)
 
 
 ## Get started

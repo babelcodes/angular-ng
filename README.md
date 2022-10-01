@@ -26,6 +26,7 @@
 - Routing, Route, Routers, route's params:
   - [Routing](./doc/features/routing.md)
 - [Services and Dependency Injection](./doc/features/services.md)
+- [HTTP Client](./httpclient.md)
 - [Guards](./doc/features/guards.md)
 - [Forms](./doc/features/form.md)
 - [RxJS & Observables](./doc/features/rxjs.md)

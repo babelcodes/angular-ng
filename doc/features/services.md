@@ -7,6 +7,7 @@
 
 - [Tutoriel Angular #24 - Comprendre les services et l'injection des dépendances](https://www.youtube.com/watch?v=dR6dChG2y6c&list=PLrbLGOB571zeR7FUQifKmjUpT4ImldCPt&index=25)
 - [Tutoriel Angular #26 - HttpClient & Error Handling avec RxJS](https://www.youtube.com/watch?v=w1PLZ6WptW4&list=PLrbLGOB571zeR7FUQifKmjUpT4ImldCPt&index=27&t=63s)
+- See [HTTP Client](./httpclient.md)
 - See [RxJS & Observables](./rxjs.md)
 
 The lifecycle is managed by angular:
@@ -19,13 +20,13 @@ The lifecycle is managed by angular:
   - A **local** injector per component and their children, to isolate data
 
 
-Generate:
+## Generate
 ````shell
 $ ng g s hotels
 ````
 
 
-Code:
+## Define
 ````typescript
 import { Injectable } from '@angular/code';   // Import decorator
 
@@ -44,6 +45,8 @@ export class HotelService {                   // Define class
 }
 ````
 
+
+## Register
 
 Register in ROOT injector / App Module (method #1):
 ````typescript
@@ -75,3 +78,7 @@ export class HotelListComponent implements OnInit {
 
 }
 ````
+
+## HttpClient
+
+- See [HTTP Client](./httpclient.md)
