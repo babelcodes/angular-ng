@@ -1,7 +1,7 @@
 # Angular ng (v2+)
 
 - [Documentation](doc/README.md)
-  - [RX-JS](doc/rxjs.md)
+  - [RX-JS](doc/features/rxjs.md)
   - [NGRX Store](doc/ngrx-store.md)
   - [Firebase](doc/firebase.md)
   - [Quickstart](doc/quickstart.md)
@@ -11,24 +11,23 @@
   - [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html#features-arrays-trailing-comma)
 
 
-## Topics
+## Features
 
-### Modules
-- [Modules](./doc/features/modules.md)
-- [Features Module](./doc/features/feature-module.md)
-
-
-### Routing
-Route, Routers, route's params:
-- [Routing](./doc/features/routing.md)
-
-
-### Guards
+- `TODO` Components
+  - Templates (directives, `ngFor`, `ngIf`...)
+  - Child component, `@Input`, `@Output`
+- `TODO` Property & Event binding (on-way & two-way with `ngModel`)
+- `TODO` Pipes
+  - https://www.youtube.com/watch?v=V-Kk8YCZCvI&list=PLrbLGOB571zeR7FUQifKmjUpT4ImldCPt&index=16
+  - https://www.youtube.com/watch?v=PoO2l4cviIo&list=PLrbLGOB571zeR7FUQifKmjUpT4ImldCPt&index=21
+- Modules
+  - [Modules](./doc/features/modules.md)
+  - [Features Module](./doc/features/feature-module.md)
+- Routing, Route, Routers, route's params:
+  - [Routing](./doc/features/routing.md)
 - [Guards](./doc/features/guards.md)
-
-
-### Forms
 - [Forms](./doc/features/form.md)
+- [RxJS & Observables](./doc/features/rxjs.md)
 
 
 

@@ -2,6 +2,10 @@
 
 ## CanActivate
 
+- https://www.youtube.com/watch?v=gAxYBtVJPl8&list=PLrbLGOB571zeR7FUQifKmjUpT4ImldCPt&index=30
+
+## CanActivate
+
 > Used to confirm exit from dirty form.
 
 - See [Forms](form.md)
